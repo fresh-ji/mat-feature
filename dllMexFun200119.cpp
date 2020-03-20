@@ -33,15 +33,21 @@ FunDLL4 endFun;
 
 // 回调声明
 void initTool(double startTime, double step) {
+    // workplace
+    // 界面
     printf("i should start at %f and step is %f\n", startTime, step);
     advanceFun(token);
 }
 
 void setToTool(double time, char* name, void* data) {
+    // workplace
+    // 怎么存储
     printf("i received data at %f for %s\n", time, name);
 }
 
 void setFinish(double time) {
+    // 关联
+    // 界面
     printf("i did something and go forward to %f\n", time);
     advanceFun(token);
 }
@@ -50,6 +56,10 @@ void endTool() {
     endFun(token);
     printf("i am over\n");
     endFlag = 1;
+}
+
+void modelSendOut(char* name, void* data) {
+    
 }
 
 void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
@@ -72,7 +82,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
     advanceFun = (FunDLL3)GetProcAddress(hInstC, "dllAdvance");
     endFun = (FunDLL4)GetProcAddress(hInstC, "dllEnd");
     
-    token = startFun("ZtOE0Jfu_insA.xml",
+    token = startFun("Inka6XNh_insA.xml",
             initTool, setToTool, setFinish, endTool);
     if("" == token) {
         err = GetLastError();
@@ -82,15 +92,5 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
         return;
     }
     mexPrintf("start success!\n");
-    
-    while (1) {
-        Sleep(300);
-        if (endFlag == 1) {
-            FreeLibrary(hInstC);
-            break;
-        }
-    }
-    
-    mexPrintf("everything fine!\n");
     return;
 }
