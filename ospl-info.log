@@ -1,0 +1,64 @@
+========================================================================================
+Report      : INFO
+Date        : 2020-03-27T12:43:27+0800
+Description : ---------------------------------------------------------------
+              -- The service is using the following configuration settings --
+              ---------------------------------------------------------------
+              Domain (id)          : ospl_sp_ddsi (0)
+              Storage              : 0 Kbytes
+              Storage threshold    : 1024 Kbytes
+              Storage address      : Not available
+              Locking              : default
+              Memory mode          : Heap memory
+              Builtin topics       : true
+              Priority inheritance : false
+              SystemId             : 698362250 from [1,2147483647]
+Node        : DESKTOP-7S214UH
+Process     : toolTestA.exe <1716>
+Thread      : spliced 20840
+Internals   : 6.9.181018OSS/4cfd22d9/4cfd22d9/The OpenSplice domain service/u_domain.c/785/0/1585284207.416611500/0
+========================================================================================
+Report      : INFO
+Date        : 2020-03-27T12:43:27+0800
+Description : Service cmsoap disabled
+Node        : DESKTOP-7S214UH
+Process     : toolTestA.exe <1716>
+Thread      : spliced 20840
+Internals   : 6.9.181018OSS/4cfd22d9/4cfd22d9/OpenSplice domain service/sr_componentInfo.c/446/0/1585284207.417855000/0
+========================================================================================
+Report      : INFO
+Date        : 2020-03-27T12:43:27+0800
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : DESKTOP-7S214UH
+Process     : toolTestA.exe <1716>
+Thread      : spliced 20840
+Internals   : 6.9.181018OSS/4cfd22d9/4cfd22d9/v_serviceChangeState/v_service.c/266/0/1585284207.419032300/0
+========================================================================================
+Report      : WARNING
+Date        : 2020-03-27T12:43:27+0800
+Description : using network interface  (192.168.42.205) selected arbitrarily from: , VMware Network Adapter VMnet1, VMware Network Adapter VMnet8, WLAN 2, vEthernet (Default Switch
+
+Node        : DESKTOP-7S214UH
+Process     : toolTestA.exe <1716>
+Thread      : ddsi2 2116
+Internals   : 6.9.181018OSS/4cfd22d9/4cfd22d9/ddsi2/q_nwif.c/989/0/1585284207.478445400/0
+========================================================================================
+Report      : INFO
+Date        : 2020-03-27T12:43:27+0800
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : DESKTOP-7S214UH
+Process     : toolTestA.exe <1716>
+Thread      : ddsi2 2116
+Internals   : 6.9.181018OSS/4cfd22d9/4cfd22d9/v_serviceChangeState/v_service.c/266/0/1585284207.485143400/0
+========================================================================================
+Report      : INFO
+Date        : 2020-03-27T12:43:27+0800
+Description : The durability service can be identified by ID: 698362250
+Node        : DESKTOP-7S214UH
+Process     : toolTestA.exe <1716>
+Thread      : durability 3592
+Internals   : 6.9.181018OSS/4cfd22d9/4cfd22d9/DurabilityService/d_durability.c/554/0/1585284207.867570500/0
