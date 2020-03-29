@@ -31,6 +31,14 @@ FunDLL3 advanceFun;
 typedef int(*FunDLL4)(char*);
 FunDLL4 endFun;
 
+//test
+typedef void(*FunDLL5)();
+FunDLL5 testInit;
+typedef void(*FunDLL6)();
+FunDLL6 testData;
+typedef void(*FunDLL7)();
+FunDLL7 testFinish;
+
 // »Øµ÷ÉùÃ÷
 void initTool(double startTime, double step) {
     // workplace
@@ -58,9 +66,7 @@ void endTool() {
     endFlag = 1;
 }
 
-void modelSendOut(char* name, void* data) {
-    
-}
+//void modelSendOut(char* name, void* data) {}
 
 void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
     
@@ -82,8 +88,12 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
     advanceFun = (FunDLL3)GetProcAddress(hInstC, "dllAdvance");
     endFun = (FunDLL4)GetProcAddress(hInstC, "dllEnd");
     
+    testInit = (FunDLL5)GetProcAddress(hInstC, "matInit");
+    testData = (FunDLL6)GetProcAddress(hInstC, "matData");
+    testFinish = (FunDLL7)GetProcAddress(hInstC, "matFinish");
+    
     token = startFun("Inka6XNh_insA.xml",
-            initTool, setToTool, setFinish, endTool);
+             initTool, setToTool, setFinish, endTool);
     if("" == token) {
         err = GetLastError();
         mexPrintf("start dll fail : %d\n", err);
@@ -92,5 +102,8 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
         return;
     }
     mexPrintf("start success!\n");
+    
+    testInit();
+    
     return;
 }
