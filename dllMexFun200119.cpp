@@ -70,7 +70,7 @@ void setFinish(double time) {
 
 void endTool() {
     endFun();
-    printf("----- i am over! -----\n");
+    printf("[INFO] end by engine.\n");
 }
 
 void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
@@ -84,12 +84,12 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
                 NULL, LOAD_WITH_ALTERED_SEARCH_PATH);
         if (hInstC == NULL) {
             err = GetLastError();
-            mexPrintf("load dll fail : %d\n", err);
+            mexPrintf("[ERROR] load dll fail by reason code : %d\n", err);
             plhs[0] = mxCreateDoubleScalar(0);
             FreeLibrary(hInstC);
             return;
         }
-        mexPrintf("----- load success! -----\n");
+        mexPrintf("[INFO] load successd.\n");
         
         startFun = (FunDLL1)GetProcAddress(hInstC, "dllStart");
         setFun = (FunDLL2)GetProcAddress(hInstC, "dllSetValue");
@@ -100,16 +100,18 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
         testData = (FunDLL6)GetProcAddress(hInstC, "matData");
         testFinish = (FunDLL7)GetProcAddress(hInstC, "matFinish");
         
+        // const char * filePath = ??
+        
         static char* token = startFun("Inka6XNh_insA.xml",
                 initTool, setToTool, setFinish, endTool);
         if("" == token) {
             err = GetLastError();
-            mexPrintf("start dll fail : %d\n", err);
+            mexPrintf("[ERROR] start dll fail by reason code : %d\n", err);
             plhs[0] = mxCreateDoubleScalar(0);
             FreeLibrary(hInstC);
             return;
         }
-        mexPrintf("----- start success! -----\n");
+        mexPrintf("[INFO] start successd.\n");
         
         testInit();
         testData();
@@ -119,6 +121,6 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
     }
     else if(2 == x) {
         endFun();
-        printf("----- i am over! -----\n");
+        printf("[INFO] end by user.\n");
     }
 }
